@@ -2,7 +2,7 @@ import sys
 import nltk
 import numpy
 from gensim import corpora, models, similarities
-
+import gensim
 import parser
 
 ########################
@@ -40,10 +40,17 @@ fold_size = len(data) / k
 print 'fold size is: %d' %fold_size
 
 #should randomly permute data first. Does numpy work?
+'''
 numpy.random.shuffle(data)
-
+print type(data)
 train_split = data[:fold_size]
 test_split = data[fold_size:]
+'''
+
+#corpus = gensim.matutils.Dense2Corpus(data)
 
 #just saying 10 for now. pass it in as a sys_arg later
-lda =  models.ldamodel.LdaModel(data, num_topics=10)
+lda =  models.ldamodel.LdaModel(corpus=dfile.LDA_corpus, id2word=dfile.dictionary, num_topics=10)
+
+print 'topics:'
+print lda.print_topics(10)

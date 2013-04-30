@@ -7,10 +7,13 @@ from gensim import corpora, models, similarities
 
 
 class DataList():
-        
+    """
+    self.data_list: the list representation of data. drop this if memory is issue
+    self.dictionary: the id2word dict used by LDA model
+    self.LDA_corpus: the LDA-styled matrix used
+    """        
     def __init__(self, path=None, file=None):
         self.data_list = []
-        self.data_key = []
         if path is None:
             rec_path = 'resources/data/'
         else: 
@@ -29,6 +32,9 @@ class DataList():
                 
                # if col not in data_key:
                #     pass
-        self.data_list = self.data_list[1:]
-        self.data_list = numpy.matrix(self.data_list)
+        self.data_list = self.data_list[1:] #first line is just long-hand explanation. we don't need it!
 
+        #self.data_list = numpy.matrix(self.data_list)
+
+        self.dictionary = corpora.Dictionary(self.data_list)
+        self.LDA_corpus = [self.dictionary.doc2bow(text) for text in self.data_list]
