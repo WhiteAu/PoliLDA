@@ -1,3 +1,9 @@
+#folders
+resources/
+
+#zips
+*.tgz
+
 *.py[cod]
 
 # C extensions
