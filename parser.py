@@ -57,10 +57,20 @@ class DataList():
                 pickle.dump(self.data_list, fp)
                 close(fp)
 
-    def arrange_by_uid(self):
-        key = {}
+    def arrange_by_column(self, col):
+        arrangement = []
         users = set(self.data_list[0]) #make set of unique users
-                    
+        uid = self.data_list[0][col] #marker
+        row = []
+        for i in len(xrange(self.data_list)):
+            if self.data_list[i][col] == uid:
+                row.append(self.data_list[i]) #grow the row
+            else:
+                uid = self.data_list[i][col] #update marker
+                arrangement.append(row) #store the row and reset it
+                row = []
+
+        return arrangement
 
     def make_header(self):
         """
