@@ -28,14 +28,15 @@ texts = [[word for word in text if word not in singletons]
 '''
 dfile  = parser.DataList(file='small_example.csv')
 
-data = dfile.data_list
 
+clean, clean_dict = dfile.make_clean(col=0)
 ########################
 #Prep Folds
 ########################
 #make k  a sysarg!
 k = 10
-print 'number of \'documents\' is: %d' %len(data)
+print 'number of \'documents\' is: %d' %len(clean)
+print 'length of document: %d' %len(clean[0])
 fold_size = len(data) / k
 print 'fold size is: %d' %fold_size
 
@@ -50,7 +51,12 @@ test_split = data[fold_size:]
 #corpus = gensim.matutils.Dense2Corpus(data)
 
 #just saying 10 for now. pass it in as a sys_arg later
-lda =  models.ldamodel.LdaModel(corpus=dfile.LDA_corpus, id2word=dfile.dictionary, num_topics=10)
+lda =  models.ldamodel.LdaModel(corpus=clean, id2word=clean_dict, num_topics=10)
 
+print lda
+
+for k in xrange(len(clean)):
+    #print lda(clean[k])
+    lda.print_topic(clean[k])
 print 'topics:'
-print lda.print_topics(10)
+print lda.print_topics(20)
