@@ -25,7 +25,7 @@ class DataList():
         else:
             self.fn = file
             
-        data = csv.reader(open((rec_path+fn), 'rb'), delimiter=',', quotechar='"')
+        data = csv.reader(open((rec_path+self.fn), 'rb'), delimiter=',', quotechar='"')
             
         for line in data:
             self.data_list.append(line)
@@ -157,5 +157,5 @@ class DataList():
         #print type(clean)
         
         dic = corpora.Dictionary(clean)        
-        clean = [dic.doc2bow(text) for text in clean]
-        return clean, dic
+        nuclean = [dic.doc2bow(text) for text in clean]
+        return nuclean, dic
