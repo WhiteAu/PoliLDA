@@ -120,7 +120,7 @@ class DataList():
         head[15] = 'Age:'
         head[16] = 'Income:'
         head[17] = 'Race:'
-        head[18] = 'Religion'
+        head[18] = 'Religion:'
         head[19] = 'Christian:+'
         head[20] = 'State:'
         head[21] = 'TVChnl:'
