@@ -3,18 +3,13 @@
 \usepackage{amssymb}
 
 \begin{document}
-\title{Recurrent Networks to Disambiguate Roles in Bang: A Multi-Agent Hidden-Role Game}
-\author{Petr Babkin, Steven Lee and Auberon ``Scott'' White\\ University of Maryland, College Park}
-\date{May 9th 2013}
+\title{Topic Modeling in Political Discourse using Latent Dirichlet Allocation}
+\author{Amanda Strickler and Auberon ``Scott'' White}
+\date{May 15th 2013}
 \maketitle
 
 \begin{abstract}
-In this report, we investigated the representational power of recurrent neural networks for role disambiguation in Bang! a card-based party game where players are secretly assigned teams, and a player's role is hidden from other players. This class of games is considered hard, and other games of a similar format have been shown to have a true random pattern of action be the best strategy.
-
-By representing players and their alignment without an implicit ordering in training, we created a theoretically fully scalable network to play games of a range of sizes. 
-
-Further research into order-independent approaches using RNN's is recommended for other games where there is an implicit ordering associated with the output.
-
+In this report, we investigated topic modelling over a corpus to the 2012 Political Debates between presidential candidates Barack Obama and Mitt Romney. By using latent dirichlet allocation over these responses clustered into pseudo-documents by some motivating concept, we demonstrate that concepts like users can be clustered into discrete 'topics' that explain the reactions associated with each.
 \end{abstract}
 
 \section{Introduction}
@@ -38,6 +33,10 @@ Further research into order-independent approaches using RNN's is recommended fo
 
 
 \begin{thebibliography}{99}
+\bibitem[Silver]{silver}
+  \emph{The Poblano Model}
+  National Journal, May 2008
+
 
 \end{thebibliography}
 
