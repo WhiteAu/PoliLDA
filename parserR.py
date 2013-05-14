@@ -77,7 +77,8 @@ class DataList():
 		line.append('')
 		total_dropped+=1
 	
-            self.data_list.append(line)
+            if check == 1:
+	        self.data_list.append(line)
 	print 'Total reactions with statment correlation: '
 	print total
 	print 'Total with no statement correlation: '
@@ -160,7 +161,7 @@ class DataList():
             return clean
         
         else:
-            c = numpy.delete(np.array(clean), drop)
+            c = numpy.delete(numpy.array(clean), drop)
 
         return c.tolist()
 
