@@ -12,7 +12,7 @@ import parser
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-dfile  = parser.DataList(file='small_example.csv')
+dfile  = parser.DataList(file='CUT-reactions_oct3_4project.csv')
 
 
 clean, clean_dict = dfile.make_clean(col=0)

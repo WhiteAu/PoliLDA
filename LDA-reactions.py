@@ -12,7 +12,7 @@ import parserR
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-dfile  = parserR.DataList(file='reactions_oct3_4project.csv')
+dfile  = parserR.DataList(file='CUT-reactions_oct3_4project.csv')
 #'reactions_oct3_4project.csv'
 #'small_example.csv'
 clean, clean_dict = dfile.make_clean(col=0)

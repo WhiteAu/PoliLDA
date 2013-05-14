@@ -21,7 +21,7 @@ class DataList():
 	#Read in the topic information from the STATEMENTS file
 	statements = []
 	path_st = 'resources/corpora/'
-	file_st = 'STATEMENTS-oct3_coded_transcript_sync.csv'
+	file_st = 'STATEMENTS2-oct3_coded_transcript_sync.csv'
 	data_st = csv.reader(open((path_st+file_st), 'rb'), delimiter=',', quotechar='"')
 	for line in data_st:
 	    statements.append(line)
