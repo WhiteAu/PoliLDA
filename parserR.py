@@ -71,13 +71,10 @@ class DataList():
 		    check=1
 		    total+=1
 	    if check == 0:
-		line.append('')
-		line.append('')
-		line.append('')
-		line.append('')
-		total_dropped+=1
+                total_dropped+=1
 	
             if check == 1:
+                line = self.parse_line(line)
 	        self.data_list.append(line)
 	print 'Total reactions with statment correlation: '
 	print total
@@ -93,6 +90,22 @@ class DataList():
         self.dictionary = corpora.Dictionary(self.data_list)
         self.LDA_corpus = [self.dictionary.doc2bow(text) for text in self.data_list]
 
+    def parse_line(self, line):
+        react = re.compile('([A-Z][a-z]*:)([A-Z][a-z]*)') #regex to pull out cand name that user agrees/disagrees with
+        
+        #tone = re.compile('')
+
+        r = react.match(line[2])
+        if r.group2 is 'Agree':
+            line[2] = r.group(1)+'Pos'
+        else:
+            line[2] r.group(1)+'Neg'
+        
+        
+        
+        return line
+        
+        
 
     def clean_data(self, head, save=False):
         """
@@ -117,7 +130,7 @@ class DataList():
         
         return clean
 
-    def arrange_by_column(self, data, col=0):
+    def arrange_by_column(self, data, col=0, col2=None):
         '''
         arrangement = [] #the list to be returned
         row = [] #the aggregated list that holds all values after sorting
@@ -140,12 +153,18 @@ class DataList():
         arrangement = []
         ids = {}
         uid = data[0][col]
+        uid2 = data[0][col2]  if col2 else None
         print 'data length is: %d' %len(data)
         for i in xrange(len(data)):
             val = data[i][col]
-            if val not in ids:
-                ids[val] = []
-            ids[val] += data[i]
+            if col2:
+                val2 = data[i][col2]
+            
+            key = val+val2 if val2 else val
+            if key not in ids:
+                
+                ids[key] = []
+            ids[key] += data[i]
             
         for key in ids:
             arrangement.append(ids[key])
