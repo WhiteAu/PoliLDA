@@ -3,8 +3,7 @@ import pickle
 import csv
 import nltk
 import numpy
-import pytz
-import datetime
+import re
 from gensim import corpora, models, similarities
 
 
@@ -95,12 +94,15 @@ class DataList():
         
         #tone = re.compile('')
 
-        r = react.match(line[2])
-        if r.group(2) is 'Agree':
-            line[2] = r.group(1)+'Pos'
-        else:
-            line[2] = r.group(1)+'Neg'
 
+        r = react.match(line[1])
+        if r is None:
+            print line[1]
+	elif r.group(2) is 'Agree':
+            line[1] = r.group(1)+'Pos'
+	else:
+            line[1] = r.group(1)+'Neg'  
+        
         for c in kill:
             del line[c] 
         
@@ -114,7 +116,9 @@ class DataList():
         save: if True will save self.data_list to <filename>.cln
         """
         clean = self.data_list
-        #print len(clean)
+	print len(head)
+        print len(clean)
+	print len(clean[0])
 
         for i in xrange(len(clean)): #foreach row
             #print len(clean[0])
