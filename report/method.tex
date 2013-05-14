@@ -1,5 +1,5 @@
 \subsection{Data Used}
-We used the 2012  Presidential Debate Corpus care of Boydstun et al. The full version is roughly 70 MB and consists of  $193286$ unique user entries.
+We used the 2012  Presidential Debate Corpus care of Boydstun et al. The full version is roughly 70 MB and consists of  $193286$ unique user entries collected from $3641$ users.
 For LDA we used \emph{gensim}, a python library developed by Radim Řehůřek \cite{gensim}
 
 \subsection{Inherent Bias}
@@ -18,5 +18,8 @@ The corpus exists as a comma separated value (CSV) file, where each atomic entry
 
 A \emph{document} is then a join operation over this matrix, where document $k$ is formed by the joining of all rows $m \on M$ such that index $m,n$ is some collective identifier.
 
-\emph{Example}: \emph{userID} is the first column of the matrix, and we wish to form documents that correspond to each user that participated in the questionnaire. Then a document is $\all m \on M | n = ID ,C_{m,n}$ In layman's terms, this is just every row with a matching userID.
+\emph{Example}: \emph{userID} is the first column of the matrix, and we wish to form documents that correspond to each user that participated in the questionnaire. Then a document is $\all m \on M | n = ID ,C_{m,n}$ In layman's terms, this is just every row with a matching userID.\\
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+in order to attach debate topic information, we did Amanda stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%

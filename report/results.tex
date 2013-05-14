@@ -5,7 +5,7 @@ Our initial approach was to treat all reactions logged by a unique user to be cl
 
 However, there is a lot of 'loud' information present that, when aggregated over a user tends to drown out potentially more interesting features.
 
-For example: User $A$ reports that they are watching the debates on the internet. This means that every entry that $A$ logs will have an identical entry of \emph{How: internet}. Because of how we chose to aggregate multiple rows together, this lends an extremely high weight to a relatively unimportant feature. To see whether this had any major effect on returned topics, we ran LDA on the unmodified data, and again with unimportant features removed:
+For example: User $A$ reports that they are watching the debates on the internet. This means that every entry that $A$ logs will have an identical entry of \emph{How: internet}. Because of how we chose to aggregate multiple rows together, this lends an extremely high weight to a relatively unimportant feature. To see whether this had any major effect on returned topics, we ran LDA on the unmodified data, and again with unimportant features removed:\\
 
 %insert pic here?
 
@@ -13,20 +13,31 @@ For example: User $A$ reports that they are watching the debates on the internet
 
 Features that were removed were:
 \begin{list}
-\item How:
-\item PoliAware:
+\item 'How:' How users watched debates
+\item 'PoliAware:' How Politically Aware Users consider themselves
+\item 'FavSrc:' Favorite Source for watching political campaigns
+\item 'TVChnl:' TV channel you watch debates on
+\item 'Pref(Econ)'
+\item 'Pref(FP)'
+\item 'Pref(Cand)'
+\item 'Ready?' Filler question
+\end{list}
+
+From the topics, we summarize the interesting differences as follows:
+\begin{list}
+\item Close to half of our topics indicated that users were, in fact, ready to begin.
 \item 
 \end{list}
 
 
 
-When we cluster documents around unique users, we get topics that look like very general demographics:\\
+\subsection{Was LDA the Right Choice?}
+Possibly. Because of the document paradigm that underlies an LDA model, CSV formatted responses have to be clustered in some way to represent this as we demonstrated in previous sections. As we discussed previously, one way that we preserved feature information was to move the column header into each feature so that information about WHAT the feature represented was preserved after clustering, and distinguish features with the same original format (eg. values ranging from $1 - 100$ for importance of political topics) so that the bag of words approach LDA assumes is acceptable doesn't produce incomprehensible output.
 
+However, there were some fundamental issues with this representation. In Initial Results we discussed how certain feature columns would overwhelm the LDA model, because the 'word' that the feature represented would be constant or near-constant across all instances in a document. To a lesser extent, any of the features that represent a dial that is left at some untouched, constant value or a feature that has a fundamentally smaller range of values that it can take will be representationally stronger in an LDA model.
 
+By design, word frequency is what drives LDA model. Essentially the tradeoff was one of data transformation (ie. matrix-style response information with high vertical repetition) for linguistic flexibility (ie. multiple topics to explain how a document was formed instead of a deterministic dimension reduction like PCA.)\\
 
+This is best summarized by Radim Řehůřek's (Gensim's author) warning: ``Garbage in, Garbage out.'' If you aren't very careful about what is fed into LDA, you can't hope to get anything insightful back out. We believe that we were able to process the data such that some meaningful information was extractable, but it is difficult to say what information was hidden by our transformations.
 
-\subsection{Difficulties Adding Topic Information}
-
-
-In the \emph{coded transcript}
 

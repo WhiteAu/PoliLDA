@@ -12,7 +12,12 @@ import parserR
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-dfile  = parserR.DataList(file='reactions_oct3_4project.csv', drop=(3,12,13,21,22,23,24,29,32))
+if sys.argv[1] == 'full':
+    dfile  = parserR.DataList(file='reactions_oct3_4project.csv')
+elif sys.argv[1] == 'trunc':
+    dfile  = parserR.DataList(file='reactions_oct3_4project.csv', drop=(3,12,13,21,22,23,24,29,32))
+
+
 #'reactions_oct3_4project.csv'
 #'small_example.csv'
 clean, clean_dict = dfile.make_clean(col=0)

@@ -16,7 +16,7 @@ class DataList():
     """        
     def __init__(self, path=None, file=None, drop=None):
         self.data_list = []
-
+        self.dropped = drop
 	#Read in the topic information from the STATEMENTS file
 	statements = []
 	path_st = 'resources/corpora/'
@@ -104,11 +104,12 @@ class DataList():
             line[1] = r.group(1)+'Neg'  
         
         n = 0
-	for c in kill:
+        if kill is not None:
+            for c in kill:
 	    #print c
 	    #print c-n
-            del line[c-n] 
-	    n += 1
+                del line[c-n] 
+                n += 1
         
         return line
         
@@ -241,11 +242,16 @@ class DataList():
 	head[37] = 'STMT_Tone:'
         return head
     
-    def make_clean(self, col=0, drop=None):
+    def make_clean(self, col=0):
         '''
         fast macro to do things
         '''
-        head = self.make_header_mod()
+        #set at init time
+        if self.dropped is None:
+            head = self.make_header()
+        else:
+            head = self.make_header_mod()
+        
         data = self.data_list
         clean = self.clean_data(head)
         #print clean
