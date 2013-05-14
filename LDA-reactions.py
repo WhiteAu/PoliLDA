@@ -17,6 +17,7 @@ dfile  = parserR.DataList(file='reactions_oct3_4project.csv')
 #'small_example.csv'
 clean, clean_dict = dfile.make_clean(col=0)
 corpora.MmCorpus.serialize('clean.mm', clean)
+corpora.svmlightcorpus.SvmLightCorpus.serialize('clean.svm',clean)#save as svm for mallet
 cor = corpora.MmCorpus('clean.mm')
 ########################
 #Prep Folds

@@ -152,6 +152,15 @@ class DataList():
         
 	return arrangement
 
+    def drop_columns(self, clean, drop=None):
+        """
+        Drops columns from a list
+        """
+        if drop is None:
+            return clean
+        for d in drop:
+            clean = numpy.delete(clean, d, 1)
+
     def make_header(self):
         """
         grunty header creation gleaned from example data
@@ -198,7 +207,7 @@ class DataList():
 	head[37] = 'STMT_Tone:'
         return head
     
-    def make_clean(self, col=0):
+    def make_clean(self, col=0, drop=None):
         '''
         fast macro to do things
         '''
@@ -206,6 +215,7 @@ class DataList():
         data = self.data_list
         clean = self.clean_data(head)
         #print clean
+        clean = self.drop_columns(clean, drop=[4, 5])
         clean = self.arrange_by_column(clean, col=col)
         #print len(clean)
         sum = 0
