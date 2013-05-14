@@ -193,18 +193,18 @@ class DataList():
         head[20] = 'State:'
         head[21] = 'TVChnl:'
         head[22] = 'Pref(Econ):'
-        head[22] = 'Pref(FP)'
-        head[23] = 'Pref(Cand):'
-        head[24] = 'Vote:'
-        head[25] = 'VoteConf:'
-        head[26] = 'VoteLikely:'
-        head[27] = 'PoliViews:'
-        head[28] = 'Ready?'
-        head[29] = 'Prio(Immigration):'
-        head[30] = 'Competence(Immigration)'
-        head[31] = 'PartyAffiliation:'#should pare the corresponding cell of this down
-        head[32] = 'FillerQ:'#Can probably delete this whole column safely
-        head[33] = 'foo:'
+        head[23] = 'Pref(FP)'
+        head[24] = 'Pref(Cand):'
+        head[25] = 'Vote:'
+        head[26] = 'VoteConf:'
+        head[27] = 'VoteLikely:'
+        head[28] = 'PoliViews:'
+        head[29] = 'Ready?'
+        head[30] = 'Prio(Immigration):'
+        head[31] = 'Competence(Immigration)'
+        head[32] = 'PartyAffiliation:'#should pare the corresponding cell of this down
+        head[33] = 'FillerQ:'#Can probably delete this whole column safely
+        #head[34] = 'foo:'
 	head[34] = 'STMT_QTopic:'
 	head[35] = 'STMT_Topic:'
 	head[36] = 'STMT_Frame:'
@@ -219,7 +219,6 @@ class DataList():
         data = self.data_list
         clean = self.clean_data(head)
         #print clean
-        clean = self.drop_columns(clean, drop=[4, 5])
         clean = self.arrange_by_column(clean, col=col)
         #print len(clean)
         sum = 0
@@ -232,3 +231,50 @@ class DataList():
         dic = corpora.Dictionary(clean)        
         nuclean = [dic.doc2bow(text) for text in clean]
         return nuclean, dic
+
+
+    def make_header_mod(self):
+        """
+        grunty header creation gleaned from example data
+        """
+        head = [None]*29
+        head[0] = 'UID:'
+        head[1] = 'React:'#In example data, this and Time header are switched, but data is not.
+        head[2] = 'Time:'
+        #head[3] = 'How:'
+        head[3] = 'Econ:'
+        head[4] = 'HC:'
+        head[5] = 'FP:'
+        head[6] = 'Abort:'
+        head[7] = 'Econ2:'
+        head[8] = 'HC2:'
+        head[9] = 'FP2'
+        head[10] = 'Abort2:'
+        #head[12] = 'PoliAware:'
+        #head[13] = 'FavSrc:'
+        head[11] = 'Gender:'
+        head[12] = 'Age:'
+        head[13] = 'Income:'
+        head[14] = 'Race:'
+        head[15] = 'Religion:'
+        head[16] = 'Christian:+'
+        head[17] = 'State:'
+        #head[21] = 'TVChnl:'
+        #head[22] = 'Pref(Econ):'
+        #head[23] = 'Pref(FP)'
+        #head[24] = 'Pref(Cand):'
+        head[18] = 'Vote:'
+        head[19] = 'VoteConf:'
+        head[20] = 'VoteLikely:'
+        head[21] = 'PoliViews:'
+        #head[28] = 'Ready?'
+        head[22] = 'Prio(Immigration):'
+        head[23] = 'Competence(Immigration)'
+        head[24] = 'PartyAffiliation:'#should pare the corresponding cell of this down
+        #head[32] = 'FillerQ:'#Can probably delete this whole column safely
+        #head[33] = 'foo:'
+	head[25] = 'STMT_QTopic:'
+	head[26] = 'STMT_Topic:'
+	head[27] = 'STMT_Frame:'
+	head[28] = 'STMT_Tone:'
+        return head

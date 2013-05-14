@@ -1,14 +1,16 @@
 \subsection{Data Used}
 We used the 2012  Presidential Debate Corpus care of Boydstun et al. The full version is roughly 70 MB and consists of  $193286$ unique user entries.
-For LDA we used gensim, a python library developed by Radim Řehůřek \cite{gensim}
+For LDA we used \emph{gensim}, a python library developed by Radim Řehůřek \cite{gensim}
 
 \subsection{Inherent Bias}
 The corpus that we are using consists of the reactions of college students to the 2012 presidential debates. Because the data reflects a subset of citizens who tend to be younger and more progressive, we feel it is necessary to state as such at the outset. Any collective refereence to respondants will be framed by this bias.
 
 \subsection{Expected Results}
-Since LDA can be thought of as a dimension reduction technique, ideally we wanted to feed in a set of documents (as described below) and get some output back that described the principal components of these documents.
+Since LDA can be thought of as a dimension reduction technique, ideally we wanted to feed in a set of documents (as described below) and get some output back that described the principal components of these documents. These components can be expressed for documents representing users like ``For a document representing User A, they were primarily concerned by with features X, Y and Z''
 
 \subsection{Evaluation Technique}
+LDA is an unsupervised learning technique, which makes evaluations implicitly more difficult since there's no comparative standard to hold a model up to.
+
 Since this was an investigative project, a strictly qualitative or comparitive analysis did not feel correct. Instead, we would deem LDA a success for this corpus if it returned topics that varied sufficiently in either feature dimensionality (different features leanding different strength to a given topic) 
 
 \subsection{Pre-Processing}

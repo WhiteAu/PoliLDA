@@ -1,1 +1,15 @@
-PLACEHOLDER
+\subsection{Initial Results}
+The main problem with using single-line reactions with LDA is data sparsity: if each line is treated as a document, then LDA will see hundreds of thousands of 30-something-word documents where no words are ever repeated. Since LDA fundamentally relies on there being some repeated information (read: words) in order to make and inference on the data, it is necessary to aggregate lines from the CSV together to make some internal aggregate that corresponds to the concept of a 'document' in LDA-speak.\\
+
+Our initial approach was to treat all reactions logged by a unique user to be clustered together; this would correspond
+
+When we cluster documents around unique users, we get topics that look like very general demographics:\\
+
+%insert pic here?
+
+
+\subsection{Difficulties Adding Topic Information}
+
+
+In the \emph{coded transcript}
+
