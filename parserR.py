@@ -215,7 +215,7 @@ class DataList():
         '''
         fast macro to do things
         '''
-        head = self.make_header()
+        head = self.make_header_mod()
         data = self.data_list
         clean = self.clean_data(head)
         #print clean
