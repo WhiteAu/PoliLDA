@@ -16,9 +16,9 @@ Since this was an investigative project, a strictly qualitative or comparitive a
 \subsection{Pre-Processing}
 The corpus exists as a comma separated value (CSV) file, where each atomic entry is separated by a carriage return, and each value within an entry is separated by a comma. For our purposes, this file can reasonably be thought of as a $MxN$ matrix, where $M$ is the number of entries and $N$ is the max number of values that an single entry could have.
 
-A \emph{document} is then a join operation over this matrix, where document $k$ is formed by the joining of all rows $m \on M$ such that index $m,n$ is some collective identifier.
+A \emph{document} is then a join operation over this matrix, where document $k$ is formed by the joining of all rows $m \in M$ such that index $m,n$ is some collective identifier.
 
-\emph{Example}: \emph{userID} is the first column of the matrix, and we wish to form documents that correspond to each user that participated in the questionnaire. Then a document is $\all m \on M | n = ID ,C_{m,n}$ In layman's terms, this is just every row with a matching userID.\\
+\emph{Example}: \emph{userID} is the first column of the matrix, and we wish to form documents that correspond to each user that participated in the questionnaire. Then a document is $\forall m \in M | n = ID ,C_{m,n}$ In layman's terms, this is just every row with a matching userID.\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 in order to attach debate topic information, we did Amanda stuff

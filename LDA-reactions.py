@@ -15,7 +15,7 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 if sys.argv[1] == 'full':
     dfile  = parserR.DataList(file='reactions_oct3_4project.csv')
 elif sys.argv[1] == 'trunc':
-    dfile  = parserR.DataList(file='reactions_oct3_4project.csv', drop=(3,12,13,21,22,23,24,29,32))
+    dfile  = parserR.DataList(file='reactions_oct3_4project.csv', drop=(3,12,13,21,22,23,24,29,33))
 
 
 #'reactions_oct3_4project.csv'
@@ -45,7 +45,7 @@ test_split = data[fold_size:]
 #corpus = gensim.matutils.Dense2Corpus(data)
 
 #just saying 10 for now. pass it in as a sys_arg later
-lda =  models.ldamodel.LdaModel(corpus=cor, id2word=clean_dict, num_topics=100)
+lda =  models.ldamodel.LdaModel(corpus=cor, id2word=clean_dict, num_topics=10)
 #lda = models.ldamodel.LdaModel(corpus=cor, id2word=clean_dict, num_topics=20, update_every=0, passes=10)
 
 print lda
