@@ -291,7 +291,7 @@ class DataList():
         head[19] = 'VoteConf:'
         head[20] = 'VoteLikely:'
         head[21] = 'PoliViews:'
-        #head[28] = 'Ready?'
+        #head[29] = 'Ready?'
         head[22] = 'Prio(Immigration):'
         head[23] = 'Competence(Immigration)'
         head[24] = 'PartyAffiliation:'#should pare the corresponding cell of this down
