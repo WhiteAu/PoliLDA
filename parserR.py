@@ -14,7 +14,7 @@ class DataList():
     self.dictionary: the id2word dict used by LDA model
     self.LDA_corpus: the LDA-styled matrix used
     """        
-    def __init__(self, path=None, file=None):
+    def __init__(self, path=None, file=None, drop=None):
         self.data_list = []
 
 	#Read in the topic information from the STATEMENTS file
@@ -73,7 +73,7 @@ class DataList():
                 total_dropped+=1
 	
             if check == 1:
-                line = self.parse_line(line)
+                line = self.parse_line(line, kill=drop)
 	        self.data_list.append(line)
 	print 'Total reactions with statment correlation: '
 	print total
