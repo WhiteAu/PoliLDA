@@ -160,9 +160,9 @@ class DataList():
             return clean
         
         else:
-            c = numpy.delete(clean, drop, 1)
+            c = numpy.delete(np.array(clean), drop)
 
-        return c
+        return c.tolist()
 
     def make_header(self):
         """
