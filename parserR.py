@@ -158,8 +158,11 @@ class DataList():
         """
         if drop is None:
             return clean
-        for d in drop:
-            clean = numpy.delete(clean, d, 1)
+        
+        else:
+            c = numpy.delete(clean, drop, 1)
+
+        return c
 
     def make_header(self):
         """
