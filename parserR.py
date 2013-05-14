@@ -103,8 +103,12 @@ class DataList():
 	else:
             line[1] = r.group(1)+'Neg'  
         
-        for c in kill:
-            del line[c] 
+        n = 0
+	for c in kill:
+	    #print c
+	    #print c-n
+            del line[c-n] 
+	    n += 1
         
         return line
         
@@ -164,6 +168,8 @@ class DataList():
             val = data[i][col]
             if col2:
                 val2 = data[i][col2]
+	    else:
+		val2 = None
             
             key = val+val2 if val2 else val
             if key not in ids:
