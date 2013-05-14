@@ -90,18 +90,19 @@ class DataList():
         self.dictionary = corpora.Dictionary(self.data_list)
         self.LDA_corpus = [self.dictionary.doc2bow(text) for text in self.data_list]
 
-    def parse_line(self, line):
+    def parse_line(self, line, kill=None):
         react = re.compile('([A-Z][a-z]*:)([A-Z][a-z]*)') #regex to pull out cand name that user agrees/disagrees with
         
         #tone = re.compile('')
 
         r = react.match(line[2])
-        if r.group2 is 'Agree':
+        if r.group(2) is 'Agree':
             line[2] = r.group(1)+'Pos'
         else:
-            line[2] r.group(1)+'Neg'
-        
-        
+            line[2] = r.group(1)+'Neg'
+
+        for c in kill:
+            del line[c] 
         
         return line
         
