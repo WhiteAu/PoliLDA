@@ -1,6 +1,4 @@
 import sys
-import nltk
-import numpy
 import logging #lda topics prints to log file
 from gensim import corpora, models, similarities
 import gensim

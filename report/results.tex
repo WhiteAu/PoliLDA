@@ -10,15 +10,11 @@ For example: User $A$ reports that they are watching the debates on the internet
 %insert pic here?
 \begin{figure}[H]
 \centering
-
 \includegraphics[scale=.3]{img/topic_full.png}
 \caption{Two example topics WITHOUT truncation}
-
 %insert pic2 here?
-
 \includegraphics[scale=.3]{img/topic_trunc.png}
 \caption{Two example topics WITH truncation}
-
 \end{figure}
 
 
@@ -56,3 +52,7 @@ By design, word frequency is what drives LDA model. Essentially the tradeoff was
 This is best summarized by Radim Řehůřek's (Gensim's author) warning: ``Garbage in, Garbage out.'' If you aren't very careful about what is fed into LDA, you can't hope to get anything insightful back out. We believe that we were able to process the data such that some meaningful information was extractable, but it is difficult to say what information was hidden by our transformations.
 
 
+\subsection{Closing Thoughts}
+This project was overall successful: it got us to take an algorithm discussed in class and apply it in a non-obvious way to a novel dataset. It left a lot of open questions for further work, though. Among them: would a visualization of the topics over the word set show anything enlightening? How does LDA measure against a more 'classic' approach to dimension reduction a la PCA?
+
+These lead to new questions: what is a good way to evaluate two different unsupervised algorithms?

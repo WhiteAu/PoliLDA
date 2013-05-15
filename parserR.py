@@ -1,8 +1,6 @@
 import sys
 import pickle
 import csv
-import nltk
-import numpy
 import re
 from gensim import corpora, models, similarities
 
@@ -184,17 +182,6 @@ class DataList():
         
 	return arrangement
 
-    def drop_columns(self, clean, drop=None):
-        """
-        Drops columns from a list
-        """
-        if drop is None:
-            return clean
-        
-        else:
-            c = numpy.delete(numpy.array(clean), drop)
-
-        return c.tolist()
 
     def make_header(self):
         """
