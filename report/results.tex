@@ -8,7 +8,7 @@ However, there is a lot of 'loud' information present that, when aggregated over
 For example: User $A$ reports that they are watching the debates on the internet. This means that every entry that $A$ logs will have an identical entry of \emph{How: internet}. As a corollary, because $A$ initially logged \emph{How: internet}, other features that act as conditional follow-ups to the question \emph{How: } are tied to that question's equivalent of 'N/A'. Because of how we chose to aggregate multiple rows together, this lends an extremely high weight to a relatively unimportant feature. To see whether this had any major effect on returned topics, we ran LDA on the unmodified data, and again with unimportant/loud features removed:\\
 
 %insert pic here?
-\begin{figure}[H]
+\begin{figure}
 \centering
 \includegraphics[scale=.3]{img/topic_full.png}
 \caption{Two example topics WITHOUT truncation}
@@ -34,13 +34,16 @@ Features that were removed were:
 
 From the topics, we summarize the interesting differences as follows:
 \begin{itemize}
-\item Before removing faetures, close to half of our topics indicated that users were, in fact, ready to begin.
-\item Topics that indicated a likelihood to vote for Obama were still critical of Obama.
+\item Before removing features, close to half of our topics indicated that users were, in fact, ready to begin.
+\item Topics that indicated a likelihood to vote for Obama were still critical of Obama. 
 \item Of topics that included religion, the only answers to  make a difference were Christian, 'None Specified' and Atheist.
-
+\item If race was mentioned, it was either 'white/caucasian' or 'no answer' (mentioned once)
+\item if Vote Likelihood was mentioned, it was at 100; If Voting today was mentioned, it was very likely for Obama
 \end{itemize}
 
+The above insights tell us two things: Feature trimming is absolutely important to reasonable topics modelling, and the inherent biases that we suspected were absolutely on display. Of all the users, $2243$ said they would vote for Obama and $891$ would vote for Romney; $419$ were not sure. By the LDA topics given, respondents were typically white, liberal, and between 18-24.  Comparing this to voting information available after the 2012 elections were over, shows that this collegiate demographic was one of the least likely to vote Republican (additionally, only $55$ users said they were 50 or older.)
 
+These results, while affirming that we got them based on our data, show that LDA will only represent what you give it: in this case, the data represented a strongly biased niche of the American voting public. Could you even imagine if a simple majority indicated as being an inevitability turned out to vote?
 
 \subsection{Was LDA the Right Choice?}
 Possibly. Because of the document paradigm that underlies an LDA model, CSV formatted responses have to be clustered in some way to represent this as we demonstrated in previous sections. As we discussed previously, one way that we preserved feature information was to move the column header into each feature so that information about WHAT the feature represented was preserved after clustering, and distinguish features with the same original format (eg. values ranging from $1 - 100$ for importance of political topics) so that the bag of words approach LDA assumes is acceptable doesn't produce incomprehensible output.
