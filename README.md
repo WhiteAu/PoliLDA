@@ -21,7 +21,7 @@ RUNNING THE CODE
 ############################
 This project was successfully tested on Ubuntu and CentOS distributions. Macintosh and Windows executions will likely fail.
 
-By default, the project runs preprocesses data found under folder resources/data/reactions_oct3_4project.csv
+By default, the project runs preprocessed data found under folder resources/data/reactions_oct3_4project.csv
 using the coded transcript information found under 
 resources/corpora/STATEMENTS2-oct3_coded_transcript_sync.csv
 
