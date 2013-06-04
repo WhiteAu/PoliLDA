@@ -1,6 +1,6 @@
 ############################
 LDA for Political Discourse
-Authors: Amanda Strickland and Scott White
+Authors: Amanda Strickler and Scott White
 ############################
 
 ############################
